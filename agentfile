@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Check if an argument is provided
+if [ $# -eq 0 ]; then
+    echo "Error: Please provide an agentfile path as an argument"
+    echo "Usage: agentfile <agentfile_path>"
+    exit 1
+fi
+
+AGENTFILE="$1"
+
+# Check if the agentfile exists
+if [ ! -f "$AGENTFILE" ]; then
+    echo "Error: Agentfile '$AGENTFILE' not found"
+    exit 1
+fi
+
+# Check if OPENAI_API_KEY is set
+if [ -z "$OPENAI_API_KEY" ]; then
+    echo "Error: OPENAI_API_KEY environment variable is not set"
+    exit 1
+fi
+
+# Run the Docker container
+docker run -p 8000:8000 \
+    -e OPENAI_API_KEY \
+    -v "$AGENTFILE:/app/config/agents.yml" \
+    ragapp/ragapp
