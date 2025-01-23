@@ -13,8 +13,10 @@ researcher:
   goal: Conduct foundational online research
   role: Online Researcher
   tools:
-    DuckDuckGo: {}
-    Wikipedia: {}
+    DuckDuckGo:
+      enabled: true
+    Wikipedia:
+      enabled: true
 reporter:
   name: Reporter
   backstory:
