@@ -2,12 +2,12 @@
 
 # Check if an argument is provided
 if [ $# -eq 0 ]; then
-    echo "Error: Please provide an agentfile path as an argument"
-    echo "Usage: agentfile <agentfile_path>"
-    exit 1
+    echo "No agentfile path provided. Creating agents.yaml from default template..."
+    cp "$(dirname "$0")/examples/default.yaml" "./agents.yaml"
+    AGENTFILE="./agents.yaml"
+else
+    AGENTFILE="$1"
 fi
-
-AGENTFILE="$1"
 
 # Check if the agentfile exists
 if [ ! -f "$AGENTFILE" ]; then

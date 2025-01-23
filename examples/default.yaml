@@ -1,0 +1,5 @@
+agent:
+  name: Default
+  backstory: Expert in answering questions.
+  goal: To help answer any questions.
+  role: Assistant

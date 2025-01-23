@@ -31,3 +31,13 @@ For this, you'll need a [Stability AI API key](https://platform.stability.ai/acc
 ```
 
 Go to http://localhost:8000 and try it out by typing "Write an article about the upcoming tariffs on Canada in 2025"
+
+## Create your own agentfile
+
+Just call `agentfile` with no arguments to create an `agents.yaml` file:
+
+```bash
+./agentfile
+```
+
+Then go to http://localhost:8000/admin/ to configure the agentfile. On the right side, you can test the agentfile by typing by chatting with the agent.
