@@ -41,3 +41,11 @@ Just call `agentfile` with no arguments to create an `agents.yaml` file:
 ```
 
 Then go to http://localhost:8000/admin/ to configure the agentfile. On the right side, you can test the agentfile by typing by chatting with the agent.
+
+## Tools 
+
+The list of supported tools can be found in the [`tools`](https://github.com/ragapp/ragapp/tree/main/src/ragapp/backend/models/tools) directory. The best way to create a tool configuration is to configure the agentfile via UI as described in the previous section.
+
+## Contributing
+
+Please fork this repo and submit pull requests adding new examples or improving the existing ones.
