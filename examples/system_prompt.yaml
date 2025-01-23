@@ -1,0 +1,7 @@
+agent:
+  name: Default
+  system_prompt: You are an helpful assistant. Help the user to answer his questions.
+  # Role and goal are required to create an agent
+  # because orchestrator needs to know the role and goal to select the right task.
+  role: Assistant
+  goal: Help the user to answer his questions.
