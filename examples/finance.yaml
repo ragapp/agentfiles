@@ -5,7 +5,6 @@ analyst:
   backstory:
     An expert financial analyst who is passionate about uncovering insights
     from the given material. You don't make up any facts; use the provided material.
-  tools:
 reporter:
   name: Reporter
   goal: Write a comprehensive article for the request.
@@ -17,6 +16,7 @@ reporter:
     ImageGenerator:
       config:
         api_key: 
+      enabled: true
 researcher:
   goal: Conduct foundational online research.
   name: Researcher
@@ -25,5 +25,5 @@ researcher:
     An expert in researching news online with a passion for uncovering insights.
     You don't make up any information; instead, use your tools to gather information.
   tools:
-    DuckDuckGo: {}
-    Wikipedia: {}
+    DuckDuckGo:
+      enabled: true
