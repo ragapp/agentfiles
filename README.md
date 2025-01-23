@@ -46,6 +46,30 @@ Then go to http://localhost:8000/admin/ to configure the agentfile. On the right
 
 The list of supported tools can be found in the [`tools`](https://github.com/ragapp/ragapp/tree/main/src/ragapp/backend/models/tools) directory. The best way to create a tool configuration is to configure the agentfile via UI as described in the previous section.
 
+## Changing the model
+
+The `agentfile` script supports the following optional parameters to change the model used:
+
+### `--model`
+
+Specify which model to use. Defaults to `gpt-4o-mini` if not specified.
+
+```bash
+./agentfile --model gpt-4o ./examples/news.yaml
+```
+
+### `--model-provider`
+
+Specify the model provider to use. Defaults to `openai` if not specified. When using `--model-provider`, you must also specify the `--model` parameter.
+
+```bash
+./agentfile --model-provider gemini --model gemini-1.5-pro-latest ./examples/news.yaml
+```
+
+The following providers are supported: `openai`, `gemini`, `ollama`, `azure-openai`, `t-systems`, `mistral`, `groq`.
+
+Changing the model provider, you need to set the necessary environment variables. For example, to use `gemini`, you need to set `GOOGLE_API_KEY` to your API key.
+
 ## Contributing
 
 Please fork this repo and submit pull requests adding new examples or improving the existing ones.

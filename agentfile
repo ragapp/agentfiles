@@ -1,12 +1,42 @@
 #!/bin/bash
 
+# Default values for model and provider
+MODEL_PROVIDER=${MODEL_PROVIDER:-openai}
+MODEL=${MODEL:-gpt-4o-mini}
+USER_SET_PROVIDER=false
+USER_SET_MODEL=false
+
+# Parse command line arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+    --model)
+        MODEL="$2"
+        USER_SET_MODEL=true
+        shift 2
+        ;;
+    --model-provider)
+        MODEL_PROVIDER="$2"
+        USER_SET_PROVIDER=true
+        shift 2
+        ;;
+    *)
+        AGENTFILE="$1"
+        shift
+        ;;
+    esac
+done
+
+# Validate model provider and model combination
+if [ "$USER_SET_PROVIDER" = true ] && [ "$USER_SET_MODEL" = false ]; then
+    echo "Error: When specifying --model-provider, you must also specify --model"
+    exit 1
+fi
+
 # Check if an argument is provided
-if [ $# -eq 0 ]; then
+if [ -z "$AGENTFILE" ]; then
     echo "No agentfile path provided. Creating agents.yaml from default template..."
     cp "$(dirname "$0")/examples/default.yaml" "./agents.yaml"
     AGENTFILE="./agents.yaml"
-else
-    AGENTFILE="$1"
 fi
 
 # Check if the agentfile exists
@@ -24,5 +54,8 @@ fi
 # Run the Docker container
 docker run -p 8000:8000 \
     -e OPENAI_API_KEY \
+    -e GOOGLE_API_KEY \
+    -e MODEL_PROVIDER="$MODEL_PROVIDER" \
+    -e MODEL="$MODEL" \
     -v "$AGENTFILE:/app/config/agents.yaml" \
     ragapp/ragapp
