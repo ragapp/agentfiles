@@ -1,7 +1,11 @@
 # agentfiles
 
-A simple file format to define AI agents (for single and multi-agent systems). 
+Run AI agents with a single file. 
+
+Using a simple file format to define AI agents (for single and multi-agent systems). 
 Each agent is defined by its name, backstory, goal, role, and the tools that it uses.
+
+The agentfile is a YAML file that is a superset of [crewai's agent config](https://docs.crewai.com/concepts/agents#yaml-configuration-recommended).
 
 ## Examples
 
